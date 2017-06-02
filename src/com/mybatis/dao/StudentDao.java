@@ -30,4 +30,44 @@ public interface StudentDao {
 	 * @return
 	 */
 	List<Student> listStudentByPage(Map<String, Integer> map);
+	
+	/**
+	 * 根据条件查询学生
+	 * @return
+	 */
+	Student getStudentByIf(Student student);
+	
+	/**
+	 * choose元素
+	 * @param student
+	 * @return
+	 */
+	List<Student> listStudentByChoose(Student student);
+	
+	/**
+	 * where元素
+	 * @param student
+	 * @return
+	 */
+	List<Student> listStudentByWhere(Student student);
+	
+	/**
+	 * trim元素
+	 * @param student
+	 * @return
+	 */
+	List<Student> listStudentByTrim(Student student);
+	
+	/**
+	 * set元素
+	 * @param student
+	 */
+	void updateStudent(Student student);
+	
+	/**
+	 * foreach元素
+	 * @param student
+	 * @return
+	 */
+	List<Student> listStudentByEach(List<Integer> list);
 }

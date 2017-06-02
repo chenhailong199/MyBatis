@@ -7,7 +7,7 @@
 	<properties resource="db.properties" />
 	<!-- 2.配置全局运行行为 -->
 	<settings>
-       <!-- 关闭延迟加载关闭 -->
+       <!-- 关闭延迟加载 -->
    	   <setting name="lazyLoadingEnabled" value="false"/>
    	   <!-- 配置log4j输出SQL语句 -->
    	   <setting name="logImpl" value="LOG4J"/>

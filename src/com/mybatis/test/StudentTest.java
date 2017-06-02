@@ -1,6 +1,8 @@
 package com.mybatis.test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -72,7 +74,65 @@ public class StudentTest {
 			System.out.println(stu);
 		}
 	}
-	
-	
-	
+	@Test
+	public void getStudentByIf(){
+		Student student = new Student();
+		student.setStuId(3);
+		student.setStuName("诸葛亮");
+		Student stu = studentDao.getStudentByIf(student);
+		System.out.println(stu);
+	}
+	@Test
+	public void listStudentByChoose(){
+		Student student = new Student();
+		//student.setStuName("关");
+		student.setStuAge(20);
+		List<Student> list = studentDao.listStudentByChoose(student);
+		for (Iterator<Student> iter = list.iterator(); iter.hasNext();){
+			System.out.println(iter.next());
+		}
+	}
+	@Test
+	public void listStudentByWhere(){
+		Student student = new Student();
+		student.setStuName("关");
+		student.setStuAge(20);
+		List<Student> list = studentDao.listStudentByWhere(student);
+		for (Iterator<Student> iter = list.iterator(); iter.hasNext();){
+			System.out.println(iter.next());
+		}
+	}
+	@Test
+	public void listStudentByTrim(){
+		Student student = new Student();
+		student.setStuName("关");
+		student.setStuAge(20);
+		List<Student> list = studentDao.listStudentByTrim(student);
+		for (Iterator<Student> iter = list.iterator(); iter.hasNext();){
+			System.out.println(iter.next());
+		}
+	}
+	@Test
+	public void updateStudent(){
+		Student student = new Student();
+		student.setStuId(2);
+		Student stu1 = studentDao.getStudentByIf(student);
+		System.out.println(stu1);
+		student.setStuCity("益州");
+		student.setStuAge(99);
+		studentDao.updateStudent(student);
+		Student stu2 = studentDao.getStudentByIf(student);
+		System.out.println(stu2);
+	}
+	@Test
+	public void listStudentByEach(){
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(3);
+		list.add(5);
+		list.add(7);
+		List<Student> studentList = studentDao.listStudentByEach(list);
+		for (Iterator<Student> iter = studentList.iterator(); iter.hasNext();){
+			System.out.println(iter.next());
+		}
+	}
 }
