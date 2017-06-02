@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.mybatis.dao.StudentCardDao">
+ 	  <!-- 配置javabean与数据库字段之间的映射，type是javaBean类型 ,id自己任意命名-->
+      <resultMap type="com.mybatis.pojo.StudentCard" id="studentCardMap">
+         <!-- property是JavaBean属性,column是数据库字段,javaType是javaBean的类型 -->
+         <id property="cid" column="c_id" javaType="java.lang.Integer"/>
+         <result property="cname" column="c_name" javaType="java.lang.String"/>
+         <result property="sid" column="s_id" javaType="java.lang.Integer"/>
+ 		 <!-- 配置一对一关联查询,association标签 -->
+         <association property="student" javaType="Student">
+             <id property="stuId" column="id" javaType="java.lang.Integer"/>
+	         <result property="stuName" column="name" javaType="java.lang.String"/>
+	         <result property="stuCity" column="city" javaType="java.lang.String"/>
+	         <result property="stuAge" column="age" javaType="java.lang.Integer"/>
+	         <result property="gradeId" column="gradeId" javaType="java.lang.Integer"/>
+         </association>
+ 	</resultMap>
+ 	<select id="listStudentCard" resultMap="studentCardMap">
+ 		SELECT c.c_id,c.c_name,s.id,s.NAME,s.city FROM student_card c JOIN student s ON c.s_id = s.id
+ 	</select>
+ 	
+ </mapper>

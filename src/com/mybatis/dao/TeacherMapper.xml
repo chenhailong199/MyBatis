@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.mybatis.dao.TeacherDao">
+ 	<!-- 配置javabean与数据库字段之间的映射，type是javaBean类型 ,id自己任意命名-->
+    <resultMap type="com.mybatis.pojo.Teacher" id="teacherMap">
+         <!-- property是JavaBean属性,column是数据库字段,javaType是javaBean的类型 -->
+         <id property="tid" column="id" javaType="java.lang.Integer"/>
+         <result property="tname" column="name" javaType="java.lang.String"/>
+ 	</resultMap>
+ 	
+ 	<select id="listTeacher" resultMap="teacherMap">
+ 		select * from teacher
+ 	</select>
+ 	
+ 	<insert id="saveTeacher" parameterType="Teacher">
+ 		insert into teacher(name) values(#{tname})
+ 	</insert>
+ </mapper>
